@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ToDo List</title>
+    <style>
+        h1 {
+            font-family: "Comic Sans MS", Cursive;
+            font-weight: bold;
+            font-size: 45px;
+            color: cyan;
+            -webkit-text-fill-color: white;
+            -webkit-text-stroke: 2px;
+        }
+
+        body {
+            background-color: #84888E;
+        }
+
+        li {
+            font-family: "Comic Sans MS", Cursive;
+            color: cyan;
+            -webkit-text-fill-color: white;
+            -webkit-text-stroke: 1px;
+        }
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        td {
+            vertical-align: top;
+        }
+
+        img {
+            max-width: 100%; /* To ensure the image fits inside the cell */
+            border: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+    <h1>ToDo List</h1>
+    <form method="post" action="/add">
+        <input type="text" style="font-family:Comic Sans MS,Cursive" name="task" placeholder="Add a task" required>
+        <button type="submit">Add</button>
+    </form>
+
+    <table>
+        <tr>
+            <!-- ToDo List Column -->
+            <td>
+                <ul>
+                    {% for task in tasks %}
+                        <li>
+                            {{ task[1] }}
+                            <a href="/delete/{{ task[0] }}">Delete</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </td>
+
+            <!-- Image Column -->
+            <td>
+                <img src="https://i.redd.it/8g6xc541z73d1.jpeg" alt="Minion beats his kid">
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
